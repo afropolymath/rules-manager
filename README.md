@@ -1,4 +1,4 @@
-# auth0-assignment
+# Rules Manager
 
 > A Vue.js project
 
