@@ -8,12 +8,15 @@
 <script>
 import Auth0Lock from 'auth0-lock'
 
+const CLIENT_ID = 'l5ClHK3PirB6J8C3NFbE54bWlIBZKnsA'
+const DOMAIN = 'chidieberennadi.auth0.com'
+
 export default {
   name: 'home',
   data () {
     return {
       authenticated: false,
-      lock: new Auth0Lock('l5ClHK3PirB6J8C3NFbE54bWlIBZKnsA', 'chidieberennadi.auth0.com', {
+      lock: new Auth0Lock(CLIENT_ID, DOMAIN, {
         auth: {
           redirect: false
         }
@@ -23,7 +26,9 @@ export default {
   mounted () {
     this.authenticated = this.checkAuth()
     this.lock.on('authenticated', (authResult) => {
-      console.log(authResult)
+      if (authResult.error) {
+        return
+      }
       this.lock.getUserInfo(authResult.accessToken, (error, profile) => {
         if (error) {
           return
@@ -53,5 +58,16 @@ button {
   font-size: 14px;
   padding: 15px 20px;
   cursor: pointer;
+}
+.Home {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 </style>

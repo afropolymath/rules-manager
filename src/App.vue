@@ -21,6 +21,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   position: absolute;
+  display: flex;
+  flex-direction: column;
   left: 0;
   top: 0;
   bottom: 0;
