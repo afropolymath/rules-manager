@@ -9,11 +9,17 @@ import router from './router'
 Vue.use(VueResource)
 Vue.use(VueLocalStorage)
 
-Vue.config.productionTip = false
+Vue.config.productionTip = true
 
-Vue.http.interceptors.push(function (request, next) {
+Vue.http.interceptors.push((request, next) => {
   request.headers.set('Authorization', 'Bearer ' + localStorage.getItem('id_token'))
-  next()
+  next((response) => {
+    if (response.status === 401) {
+      localStorage.removeItem('id_token')
+      localStorage.removeItem('profile')
+      Vue.router.push('/')
+    }
+  })
 })
 
 /* eslint-disable no-new */

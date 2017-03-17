@@ -236,6 +236,10 @@ header h1 {
 
 .user-name {
   margin-right: 15px;
+  background: #232323;
+  border-radius: 50px;
+  padding: 7px 15px;
+  color: #FFF;
 }
 
 .logout-link {

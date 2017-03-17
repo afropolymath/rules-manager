@@ -1,6 +1,9 @@
 <template>
   <div class="Home">
-    <h1>Rules Dashboard Login</h1>
+    <div class="logo">
+      <img src="https://cdn.auth0.com/styleguide/latest/img/logo.png" />
+    </div>
+    <h1>Rules Manager</h1>
     <button @click="login()">Enter Rules Dashboard</button>
   </div>
 </template>
@@ -8,15 +11,12 @@
 <script>
 import Auth0Lock from 'auth0-lock'
 
-const CLIENT_ID = 'l5ClHK3PirB6J8C3NFbE54bWlIBZKnsA'
-const DOMAIN = 'chidieberennadi.auth0.com'
-
 export default {
   name: 'home',
   data () {
     return {
       authenticated: false,
-      lock: new Auth0Lock(CLIENT_ID, DOMAIN, {
+      lock: new Auth0Lock(process.env.AUTH0_CLIENT_ID, process.env.AUTH0_DOMAIN, {
         auth: {
           redirect: false
         }
@@ -59,6 +59,7 @@ button {
   padding: 15px 20px;
   cursor: pointer;
 }
+
 .Home {
   position: absolute;
   top: 0;
@@ -69,5 +70,14 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.logo {
+  margin-bottom: 20px;
+}
+
+.logo img {
+  width: 150px;
+  height: auto;
 }
 </style>

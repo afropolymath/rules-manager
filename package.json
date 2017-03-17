@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently --kill-others \"nodemon server/app.js\" \"node build/dev-server.js\"",
+    "prod": "npm run build && node server/app.js",
     "build": "node build/build.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
@@ -16,6 +17,7 @@
     "auth0": "^2.6.0",
     "auth0-lock": "^10.13.0",
     "cors": "^2.8.1",
+    "dotenv": "^4.0.0",
     "node-restify-validation": "^1.1.1",
     "restify": "^4.3.0",
     "restify-jwt": "^0.4.0",
